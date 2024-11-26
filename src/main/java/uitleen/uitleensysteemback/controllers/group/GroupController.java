@@ -40,7 +40,7 @@ public class GroupController {
     }
 
     @GetMapping("/{groupId}")
-    public Optional<Group> getGroupById(final long groupId) {
+    public Optional<Group> getGroupById(@PathVariable long groupId) {
         return getByIdGroupService.getGroupById(groupId);
     }
 
