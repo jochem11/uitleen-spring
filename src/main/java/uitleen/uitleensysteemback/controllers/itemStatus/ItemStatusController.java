@@ -9,9 +9,10 @@ import uitleen.uitleensysteemback.controllers.itemStatus.create.CreateItemStatus
 import uitleen.uitleensysteemback.controllers.itemStatus.deleteById.DeleteByIdItemStatusService;
 import uitleen.uitleensysteemback.controllers.itemStatus.edit.EditItemStatusRequest;
 import uitleen.uitleensysteemback.controllers.itemStatus.edit.EditItemStatusService;
+import uitleen.uitleensysteemback.controllers.itemStatus.get.GetItemStatusResponse;
 import uitleen.uitleensysteemback.controllers.itemStatus.get.GetItemStatusService;
+import uitleen.uitleensysteemback.controllers.itemStatus.getById.GetByIdItemStatusResponse;
 import uitleen.uitleensysteemback.controllers.itemStatus.getById.GetByIdItemStatusService;
-import uitleen.uitleensysteemback.models.ItemStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +46,7 @@ public class ItemStatusController {
     }
 
     @GetMapping
-    public List<ItemStatus> getItemStatuses() {
+    public List<GetItemStatusResponse> getItemStatuses() {
         return getItemStatusService.getCategories();
     }
 
@@ -56,7 +57,7 @@ public class ItemStatusController {
     }
 
     @GetMapping("/{itemStatusId}")
-    public Optional<ItemStatus> getItemStatusById(@PathVariable final long itemStatusId) {
+    public Optional<GetByIdItemStatusResponse> getItemStatusById(@PathVariable final long itemStatusId) {
         return getByIdItemStatusService.getById(itemStatusId);
     }
 

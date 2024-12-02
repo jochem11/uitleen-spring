@@ -1,10 +1,7 @@
 package uitleen.uitleensysteemback.controllers.course;
 
-import org.springframework.data.repository.CrudRepository;
-import uitleen.uitleensysteemback.models.Course;
+import org.springframework.data.jpa.repository.JpaRepository;
+import uitleen.uitleensysteemback.entities.Course;
 
-import java.util.List;
-
-public interface CourseRepository extends CrudRepository<Course, Long> {
-    List<Course> findAll();
+public interface CourseRepository extends JpaRepository<Course, Long> {
 }

@@ -1,4 +1,4 @@
-package uitleen.uitleensysteemback.models;
+package uitleen.uitleensysteemback.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

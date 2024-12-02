@@ -1,10 +1,7 @@
 package uitleen.uitleensysteemback.controllers.itemStatus;
 
-import org.springframework.data.repository.CrudRepository;
-import uitleen.uitleensysteemback.models.ItemStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import uitleen.uitleensysteemback.entities.ItemStatus;
 
-import java.util.List;
-
-public interface ItemStatusRepository extends CrudRepository<ItemStatus, Long> {
-    List<ItemStatus> findAll();
+public interface ItemStatusRepository extends JpaRepository<ItemStatus, Long> {
 }

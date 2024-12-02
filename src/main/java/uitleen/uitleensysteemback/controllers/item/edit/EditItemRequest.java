@@ -2,8 +2,8 @@ package uitleen.uitleensysteemback.controllers.item.edit;
 
 import lombok.Getter;
 import lombok.Setter;
-import uitleen.uitleensysteemback.models.Category;
-import uitleen.uitleensysteemback.models.ItemStatus;
+import uitleen.uitleensysteemback.entities.Category;
+import uitleen.uitleensysteemback.entities.ItemStatus;
 
 @Getter
 @Setter

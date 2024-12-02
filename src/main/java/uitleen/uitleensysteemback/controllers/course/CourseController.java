@@ -9,9 +9,11 @@ import uitleen.uitleensysteemback.controllers.course.create.CreateCourseService;
 import uitleen.uitleensysteemback.controllers.course.deleteById.DeleteByIdCourseService;
 import uitleen.uitleensysteemback.controllers.course.edit.EditCourseRequest;
 import uitleen.uitleensysteemback.controllers.course.edit.EditCourseService;
+import uitleen.uitleensysteemback.controllers.course.get.GetCourseResponse;
 import uitleen.uitleensysteemback.controllers.course.get.GetCourseService;
+import uitleen.uitleensysteemback.controllers.course.getById.GetByIdCourseResponse;
 import uitleen.uitleensysteemback.controllers.course.getById.GetByIdCourseService;
-import uitleen.uitleensysteemback.models.Course;
+import uitleen.uitleensysteemback.entities.Course;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,12 +37,12 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<Course> getCourses() {
+    public List<GetCourseResponse> getCourses() {
         return getCourseService.getCourses();
     }
 
     @GetMapping("/{courseId}")
-    public Optional<Course> getCourseById(@PathVariable final long courseId) {
+    public Optional<GetByIdCourseResponse> getCourseById(@PathVariable final long courseId) {
         return getByIdCourseService.getCourseById(courseId);
     }
 

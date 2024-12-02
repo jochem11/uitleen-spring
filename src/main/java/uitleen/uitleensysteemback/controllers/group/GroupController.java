@@ -9,9 +9,11 @@ import uitleen.uitleensysteemback.controllers.group.create.CreateGroupService;
 import uitleen.uitleensysteemback.controllers.group.deleteById.DeleteByIdGroupService;
 import uitleen.uitleensysteemback.controllers.group.edit.EditGroupRequest;
 import uitleen.uitleensysteemback.controllers.group.edit.EditGroupService;
+import uitleen.uitleensysteemback.controllers.group.get.GetGroupResponse;
 import uitleen.uitleensysteemback.controllers.group.get.GetGroupService;
+import uitleen.uitleensysteemback.controllers.group.getById.GetByIdGroupResponse;
 import uitleen.uitleensysteemback.controllers.group.getById.GetByIdGroupService;
-import uitleen.uitleensysteemback.models.Group;
+import uitleen.uitleensysteemback.entities.Group;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,12 +37,12 @@ public class GroupController {
     }
 
     @GetMapping
-    public List<Group> getGroups() {
+    public List<GetGroupResponse> getGroups() {
         return getGroupService.getGroups();
     }
 
     @GetMapping("/{groupId}")
-    public Optional<Group> getGroupById(@PathVariable long groupId) {
+    public Optional<GetByIdGroupResponse> getGroupById(@PathVariable long groupId) {
         return getByIdGroupService.getGroupById(groupId);
     }
 

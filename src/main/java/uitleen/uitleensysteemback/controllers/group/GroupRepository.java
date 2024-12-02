@@ -1,10 +1,8 @@
 package uitleen.uitleensysteemback.controllers.group;
 
-import org.springframework.data.repository.CrudRepository;
-import uitleen.uitleensysteemback.models.Group;
+import org.springframework.data.jpa.repository.JpaRepository;
+import uitleen.uitleensysteemback.entities.Group;
 
-import java.util.List;
 
-public interface GroupRepository extends CrudRepository<Group, Long> {
-    List<Group> findAll();
+public interface GroupRepository extends JpaRepository<Group, Long> {
 }

@@ -1,10 +1,9 @@
 package uitleen.uitleensysteemback.controllers.course.edit;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.course.CourseRepository;
-import uitleen.uitleensysteemback.models.Course;
+import uitleen.uitleensysteemback.entities.Course;
 
 @Service
 public class EditCourseService {

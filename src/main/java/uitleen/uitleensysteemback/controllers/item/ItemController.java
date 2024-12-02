@@ -9,9 +9,11 @@ import uitleen.uitleensysteemback.controllers.item.create.CreateItemService;
 import uitleen.uitleensysteemback.controllers.item.deleteById.DeleteByIdItemService;
 import uitleen.uitleensysteemback.controllers.item.edit.EditItemRequest;
 import uitleen.uitleensysteemback.controllers.item.edit.EditItemService;
+import uitleen.uitleensysteemback.controllers.item.get.GetItemResponse;
 import uitleen.uitleensysteemback.controllers.item.get.GetItemService;
+import uitleen.uitleensysteemback.controllers.item.getById.GetByIdItemResponse;
 import uitleen.uitleensysteemback.controllers.item.getById.GetByIdItemService;
-import uitleen.uitleensysteemback.models.Item;
+import uitleen.uitleensysteemback.entities.Item;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,14 +47,14 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<Item> getItems(@RequestParam Optional<String> name,
-                               @RequestParam Optional<String> categoryName,
-                               @RequestParam Optional<String> itemStatusName) {
+    public List<GetItemResponse> getItems(@RequestParam Optional<String> name,
+                                          @RequestParam Optional<String> categoryName,
+                                          @RequestParam Optional<String> itemStatusName) {
         return getItemService.getItems(name, categoryName, itemStatusName);
     }
 
     @GetMapping("/{itemId}")
-    public Optional<Item> getItemById(@PathVariable long itemId) {
+    public Optional<GetByIdItemResponse> getItemById(@PathVariable long itemId) {
         return getByIdItemService.getItemById(itemId);
     }
 

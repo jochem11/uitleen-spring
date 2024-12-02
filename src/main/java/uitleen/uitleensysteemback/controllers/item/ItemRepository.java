@@ -1,17 +1,15 @@
 package uitleen.uitleensysteemback.controllers.item;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import uitleen.uitleensysteemback.models.Item;
+import uitleen.uitleensysteemback.entities.Item;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ItemRepository extends CrudRepository<Item, Long>, JpaSpecificationExecutor<Item> {
-    List<Item> findAll();
-
+public interface ItemRepository extends JpaRepository<Item, Long>, JpaSpecificationExecutor<Item> {
     @Query("SELECT i FROM Item i " +
             "JOIN i.category c " +
             "JOIN i.itemStatus s " +

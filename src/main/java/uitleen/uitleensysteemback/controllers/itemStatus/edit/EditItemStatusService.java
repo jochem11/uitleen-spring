@@ -3,7 +3,7 @@ package uitleen.uitleensysteemback.controllers.itemStatus.edit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.itemStatus.ItemStatusRepository;
-import uitleen.uitleensysteemback.models.ItemStatus;
+import uitleen.uitleensysteemback.entities.ItemStatus;
 
 @Service
 public class EditItemStatusService {

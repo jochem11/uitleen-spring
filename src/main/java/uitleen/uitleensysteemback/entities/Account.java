@@ -1,4 +1,4 @@
-package uitleen.uitleensysteemback.models;
+package uitleen.uitleensysteemback.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,18 +28,20 @@ public class Account {
     private String lastname;
 
     @Column(name = "displayname")
-    private String displayname;
+    private String displayName;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "cardnumber")
-    private long cardnumber;
+    private long cardNumber;
 
     @ManyToOne
+    @JoinColumn(name = "group_id")
     private Group group;
 
     @ManyToOne
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @ManyToMany
@@ -54,9 +56,9 @@ public class Account {
     @PreUpdate
     private void setDisplayName() {
         if (insertion != null && !insertion.isEmpty()) {
-            this.displayname = String.format("%s %s %s", firstname, insertion, lastname).trim();
+            this.displayName = String.format("%s %s %s", firstname, insertion, lastname).trim();
         } else {
-            this.displayname = String.format("%s %s", firstname, lastname).trim();
+            this.displayName = String.format("%s %s", firstname, lastname).trim();
         }
     }
 }

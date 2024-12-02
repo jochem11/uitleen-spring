@@ -9,9 +9,11 @@ import uitleen.uitleensysteemback.controllers.category.create.CreateCategoryServ
 import uitleen.uitleensysteemback.controllers.category.deleteById.DeleteByIdCategoryService;
 import uitleen.uitleensysteemback.controllers.category.edit.EditCategoryRequest;
 import uitleen.uitleensysteemback.controllers.category.edit.EditCategoryService;
+import uitleen.uitleensysteemback.controllers.category.get.GetCategoryResponse;
 import uitleen.uitleensysteemback.controllers.category.get.GetCategoryService;
+import uitleen.uitleensysteemback.controllers.category.getById.GetByIdCategoryResponse;
 import uitleen.uitleensysteemback.controllers.category.getById.GetByIdCategoryService;
-import uitleen.uitleensysteemback.models.Category;
+import uitleen.uitleensysteemback.entities.Category;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,13 +47,13 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Category>> getCategories() {
-        return ResponseEntity.ok(getCategoryService.getCategories());
+    public List<GetCategoryResponse> getCategories() {
+        return getCategoryService.getCategories();
     }
 
     @GetMapping("/{categoryId}")
-    public ResponseEntity<Optional<Category>> getCategoryById(@PathVariable final long categoryId) {
-        return ResponseEntity.ok(getByIdCategoryService.getCategoryById(categoryId));
+    public Optional<GetByIdCategoryResponse> getCategoryById(@PathVariable final long categoryId) {
+        return getByIdCategoryService.getCategoryById(categoryId);
     }
 
     @DeleteMapping("/{categoryId}")

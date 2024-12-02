@@ -3,7 +3,7 @@ package uitleen.uitleensysteemback.controllers.course.getById;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.course.CourseRepository;
-import uitleen.uitleensysteemback.models.Course;
+import uitleen.uitleensysteemback.entities.Course;
 
 import java.util.Optional;
 
@@ -16,7 +16,15 @@ public class GetByIdCourseService {
         this.courseRepository = courseRepository;
     }
 
-    public Optional<Course> getCourseById(final long courseId) {
-        return courseRepository.findById(courseId);
+    public Optional<GetByIdCourseResponse> getCourseById(final long courseId) {
+        Optional<Course> course = courseRepository.findById(courseId);
+        return course.map(this::toGetByIdCourseResponse);
+    }
+
+    private GetByIdCourseResponse toGetByIdCourseResponse(Course course) {
+        GetByIdCourseResponse response = new GetByIdCourseResponse();
+        response.setId(course.getId());
+        response.setName(course.getName());
+        return response;
     }
 }

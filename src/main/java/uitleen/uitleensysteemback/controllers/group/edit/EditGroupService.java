@@ -3,7 +3,7 @@ package uitleen.uitleensysteemback.controllers.group.edit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.group.GroupRepository;
-import uitleen.uitleensysteemback.models.Group;
+import uitleen.uitleensysteemback.entities.Group;
 
 @Service
 public class EditGroupService {

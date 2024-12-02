@@ -3,7 +3,7 @@ package uitleen.uitleensysteemback.controllers.category.create;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.category.CategoryRepository;
-import uitleen.uitleensysteemback.models.Category;
+import uitleen.uitleensysteemback.entities.Category;
 
 @Service
 public class CreateCategoryService {

@@ -1,16 +1,18 @@
-package uitleen.uitleensysteemback.models;
+package uitleen.uitleensysteemback.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(
-        name = "group"
+        name = "course"
 )
-@Setter
 @Getter
-public class Group {
+@Setter
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,4 +20,7 @@ public class Group {
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "course")
+    private Set<Account> items;
 }

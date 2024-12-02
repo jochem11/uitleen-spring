@@ -1,10 +1,7 @@
 package uitleen.uitleensysteemback.controllers.category;
 
-import org.springframework.data.repository.CrudRepository;
-import uitleen.uitleensysteemback.models.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+import uitleen.uitleensysteemback.entities.Category;
 
-import java.util.List;
-
-public interface CategoryRepository extends CrudRepository<Category, Long> {
-    List<Category> findAll();
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 }

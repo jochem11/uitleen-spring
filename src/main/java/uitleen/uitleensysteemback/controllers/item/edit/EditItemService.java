@@ -3,7 +3,7 @@ package uitleen.uitleensysteemback.controllers.item.edit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.item.ItemRepository;
-import uitleen.uitleensysteemback.models.Item;
+import uitleen.uitleensysteemback.entities.Item;
 
 @Service
 public class EditItemService {

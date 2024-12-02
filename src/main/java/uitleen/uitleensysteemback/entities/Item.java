@@ -1,4 +1,4 @@
-package uitleen.uitleensysteemback.models;
+package uitleen.uitleensysteemback.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,8 +23,10 @@ public class Item {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
+    @JoinColumn(name = "item_status_id")
     private ItemStatus itemStatus;
 }
