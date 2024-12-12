@@ -23,8 +23,8 @@ public class EditItemService {
     private Item mapRequestToItem(Item item, final EditItemRequest request) {
         item.setName(request.getName());
         item.setDescription(request.getDescription());
-        item.setCategory(request.getCategory());
-        item.setItemStatus(request.getItemStatus());
+        item.setCategoryId(request.getCategoryId());
+        item.setItemStatusId(request.getItemStatusId());
         return item;
     }
 }

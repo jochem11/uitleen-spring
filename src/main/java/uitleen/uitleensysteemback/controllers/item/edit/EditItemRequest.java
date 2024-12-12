@@ -12,7 +12,7 @@ public class EditItemRequest {
 
     private String description;
 
-    private Category category;
+    private long categoryId;
 
-    private ItemStatus itemStatus;
+    private long itemStatusId;
 }

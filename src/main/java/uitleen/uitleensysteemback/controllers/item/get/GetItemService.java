@@ -17,16 +17,20 @@ public class GetItemService {
         this.itemRepository = itemRepository;
     }
 
-    public List<GetItemResponse> getItems(final Optional<String> name, final Optional<String> categoryName , final Optional<String> itemStatusName) {
-
-        if (name.isPresent() || categoryName.isPresent() || itemStatusName.isPresent()) {
-            List<Item> items = itemRepository.findByFilters(name, categoryName, itemStatusName);
+    public List<GetItemResponse> getItems(final Optional<String> name, final Optional<Long> categoryId, final Optional<Long> itemStatusId) {
+        if (name.isPresent() || categoryId.isPresent() || itemStatusId.isPresent()) {
+            List<Item> items = itemRepository.findByFilters(
+                    name.orElse(null),
+                    categoryId.orElse(null),
+                    itemStatusId.orElse(null)
+            );
             return items.stream()
                     .map(this::toItemResponse)
                     .toList();
         }
 
-        List<Item> items =  itemRepository.findAll();
+        List<Item> items = itemRepository.findAll();
+
         return items.stream()
                 .map(this::toItemResponse)
                 .toList();
@@ -36,8 +40,8 @@ public class GetItemService {
         GetItemResponse response = new GetItemResponse();
         response.setId(item.getId());
         response.setName(item.getName());
-        response.setCategoryId(item.getCategory().getId());
-        response.setItemStatusId(item.getItemStatus().getId());
+        response.setCategoryId(item.getCategoryId());
+        response.setItemStatusId(item.getItemStatusId());
         return response;
     }
 }

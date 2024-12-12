@@ -1,12 +1,15 @@
 package uitleen.uitleensysteemback.controllers.item.create;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.item.ItemRepository;
 import uitleen.uitleensysteemback.entities.Item;
 
 @Service
+@Transactional
 public class CreateItemService {
+
     private final ItemRepository itemRepository;
 
     @Autowired
@@ -15,15 +18,12 @@ public class CreateItemService {
     }
 
     public void createItem(CreateItemRequest request) {
-        itemRepository.save(mapRequestToItem(request));
-    }
-
-    private Item mapRequestToItem(final CreateItemRequest request) {
-        final Item item = new Item();
+        Item item = new Item();
         item.setName(request.getName());
         item.setDescription(request.getDescription());
-        item.setCategory(request.getCategory());
-        item.setItemStatus(request.getItemStatus());
-        return item;
+        item.setCategoryId(request.getCategoryId());
+        item.setItemStatusId(request.getItemStatusId());
+
+        itemRepository.save(item);
     }
 }

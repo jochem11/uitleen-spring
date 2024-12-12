@@ -25,8 +25,8 @@ public class GetByIdItemService {
         GetByIdItemResponse response = new GetByIdItemResponse();
         response.setId(item.getId());
         response.setName(item.getName());
-        response.setCategoryId(item.getCategory().getId());
-        response.setItemStatusId(item.getItemStatus().getId());
+        response.setCategoryId(item.getCategoryId());
+        response.setItemStatusId(item.getItemStatusId());
         return response;
     }
 }

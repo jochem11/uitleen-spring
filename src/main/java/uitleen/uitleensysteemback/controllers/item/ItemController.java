@@ -48,9 +48,9 @@ public class ItemController {
 
     @GetMapping
     public List<GetItemResponse> getItems(@RequestParam Optional<String> name,
-                                          @RequestParam Optional<String> categoryName,
-                                          @RequestParam Optional<String> itemStatusName) {
-        return getItemService.getItems(name, categoryName, itemStatusName);
+                                          @RequestParam Optional<Long> categoryId,
+                                          @RequestParam Optional<Long> itemStatusId) {
+        return getItemService.getItems(name, categoryId, itemStatusId);
     }
 
     @GetMapping("/{itemId}")
