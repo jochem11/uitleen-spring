@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 public class PagedResponse<T> {
     private List<T> content;
     private int page;

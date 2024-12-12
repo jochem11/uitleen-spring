@@ -13,7 +13,10 @@ import uitleen.uitleensysteemback.controllers.item.get.GetItemResponse;
 import uitleen.uitleensysteemback.controllers.item.get.GetItemService;
 import uitleen.uitleensysteemback.controllers.item.getById.GetByIdItemResponse;
 import uitleen.uitleensysteemback.controllers.item.getById.GetByIdItemService;
+import uitleen.uitleensysteemback.controllers.item.paged.PagedItemResponse;
+import uitleen.uitleensysteemback.controllers.item.paged.PagedItemService;
 import uitleen.uitleensysteemback.entities.Item;
+import uitleen.uitleensysteemback.models.PagedResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,18 +29,20 @@ public class ItemController {
     private final GetByIdItemService getByIdItemService;
     private final DeleteByIdItemService deleteByIdItemService;
     private final EditItemService editItemService;
+    private final PagedItemService pagedItemService;
 
     @Autowired
     public ItemController(CreateItemService createItemService,
                           GetItemService getItemService,
                           GetByIdItemService getByIdItemService,
                           DeleteByIdItemService deleteByIdItemService,
-                          EditItemService editItemService) {
+                          EditItemService editItemService, PagedItemService pagedItemService) {
         this.createItemService = createItemService;
         this.getItemService = getItemService;
         this.getByIdItemService = getByIdItemService;
         this.deleteByIdItemService = deleteByIdItemService;
         this.editItemService = editItemService;
+        this.pagedItemService = pagedItemService;
     }
 
     @PostMapping
@@ -68,5 +73,10 @@ public class ItemController {
     public ResponseEntity<HttpStatus> editItem(@PathVariable long itemId, @RequestBody EditItemRequest request) {
         editItemService.editItem(itemId, request);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/paged")
+    public PagedResponse<PagedItemResponse> getPagedItems(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
+        return pagedItemService.getPagedItems(page, size);
     }
 }

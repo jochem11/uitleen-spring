@@ -1,11 +1,11 @@
-package uitleen.uitleensysteemback.controllers.group.get;
+package uitleen.uitleensysteemback.controllers.classGroup.get;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class GetGroupResponse {
+public class GetClassGroupResponse {
     private Long id;
     private String name;
 }

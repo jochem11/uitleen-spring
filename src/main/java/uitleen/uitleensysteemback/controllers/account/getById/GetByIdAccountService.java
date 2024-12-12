@@ -30,7 +30,7 @@ public class GetByIdAccountService {
         response.setDisplayName(account.getDisplayName());
         response.setEmail(account.getEmail());
         response.setCardNumber(account.getCardNumber());
-        response.setGroupId(account.getGroup().getId());
+        response.setGroupId(account.getClassGroup().getId());
         response.setCourseId(account.getCourse().getId());
         response.setRoles(account.getRoles().stream().map(this::toRoleResponse).toList());
         return response;

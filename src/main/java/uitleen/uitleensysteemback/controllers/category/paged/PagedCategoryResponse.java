@@ -1,11 +1,11 @@
-package uitleen.uitleensysteemback.controllers.group.getById;
+package uitleen.uitleensysteemback.controllers.category.paged;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class GetByIdGroupResponse {
+public class PagedCategoryResponse {
     private Long id;
     private String name;
 }

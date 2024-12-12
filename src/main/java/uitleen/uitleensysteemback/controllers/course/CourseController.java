@@ -13,7 +13,10 @@ import uitleen.uitleensysteemback.controllers.course.get.GetCourseResponse;
 import uitleen.uitleensysteemback.controllers.course.get.GetCourseService;
 import uitleen.uitleensysteemback.controllers.course.getById.GetByIdCourseResponse;
 import uitleen.uitleensysteemback.controllers.course.getById.GetByIdCourseService;
+import uitleen.uitleensysteemback.controllers.course.paged.PagedCourseResponse;
+import uitleen.uitleensysteemback.controllers.course.paged.PagedCourseService;
 import uitleen.uitleensysteemback.entities.Course;
+import uitleen.uitleensysteemback.models.PagedResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,14 +29,16 @@ public class CourseController {
     private final EditCourseService editCourseService;
     private final CreateCourseService createCourseService;
     private final DeleteByIdCourseService deleteByIdCourseService;
+    private final PagedCourseService pagedCourseService;
 
     @Autowired
-    public CourseController(final GetCourseService getCourseService, GetByIdCourseService getByIdCourseService, EditCourseService editCourseService, CreateCourseService createCourseService, DeleteByIdCourseService deleteByIdCourseService) {
+    public CourseController(final GetCourseService getCourseService, GetByIdCourseService getByIdCourseService, EditCourseService editCourseService, CreateCourseService createCourseService, DeleteByIdCourseService deleteByIdCourseService, PagedCourseService pagedCourseService) {
         this.getCourseService = getCourseService;
         this.getByIdCourseService = getByIdCourseService;
         this.editCourseService = editCourseService;
         this.createCourseService = createCourseService;
         this.deleteByIdCourseService = deleteByIdCourseService;
+        this.pagedCourseService = pagedCourseService;
     }
 
     @GetMapping
@@ -62,5 +67,10 @@ public class CourseController {
     public ResponseEntity<HttpStatus> deleteCourseById(@PathVariable final long courseId) {
         deleteByIdCourseService.deleteById(courseId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/paged")
+    public PagedResponse<PagedCourseResponse> getPagedCourses(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
+        return pagedCourseService.getPagedCourses(page, size);
     }
 }

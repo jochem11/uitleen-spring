@@ -6,11 +6,11 @@ import lombok.Setter;
 
 @Entity
 @Table(
-        name = "group"
+        name = "classGroup"
 )
 @Setter
 @Getter
-public class Group {
+public class ClassGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

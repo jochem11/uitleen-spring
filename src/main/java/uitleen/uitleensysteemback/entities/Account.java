@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(
@@ -37,12 +36,12 @@ public class Account {
     @Column(name = "cardnumber")
     private Long cardNumber;
 
-    @Column(name = "group_id")
+    @Column(name = "class_group_id")
     private Long groupId;
 
     @ManyToOne
-    @JoinColumn(name = "group_id", insertable = false, updatable = false)
-    private Group group;
+    @JoinColumn(name = "class_group_id", insertable = false, updatable = false)
+    private ClassGroup classGroup;
 
     @Column(name = "course_id")
     private Long courseId;

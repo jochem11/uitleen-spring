@@ -13,7 +13,10 @@ import uitleen.uitleensysteemback.controllers.category.get.GetCategoryResponse;
 import uitleen.uitleensysteemback.controllers.category.get.GetCategoryService;
 import uitleen.uitleensysteemback.controllers.category.getById.GetByIdCategoryResponse;
 import uitleen.uitleensysteemback.controllers.category.getById.GetByIdCategoryService;
+import uitleen.uitleensysteemback.controllers.category.paged.PagedCategoryResponse;
+import uitleen.uitleensysteemback.controllers.category.paged.PagedCategoryService;
 import uitleen.uitleensysteemback.entities.Category;
+import uitleen.uitleensysteemback.models.PagedResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,18 +29,20 @@ public class CategoryController {
     private final GetByIdCategoryService getByIdCategoryService;
     private final DeleteByIdCategoryService deleteByIdCategoryService;
     private final EditCategoryService editCategoryService;
+    private final PagedCategoryService pagedCategoryService;
 
     @Autowired
     public CategoryController(final CreateCategoryService createCategoryService,
                               final GetCategoryService getCategoryService,
                               final GetByIdCategoryService getByIdCategoryService,
                               final DeleteByIdCategoryService deleteByIdCategoryService,
-                              final EditCategoryService editCategoryService) {
+                              final EditCategoryService editCategoryService, PagedCategoryService pagedCategoryService) {
         this.createCategoryService = createCategoryService;
         this.getCategoryService = getCategoryService;
         this.getByIdCategoryService = getByIdCategoryService;
         this.deleteByIdCategoryService = deleteByIdCategoryService;
         this.editCategoryService = editCategoryService;
+        this.pagedCategoryService = pagedCategoryService;
     }
 
     @PostMapping
@@ -66,5 +71,10 @@ public class CategoryController {
     public ResponseEntity<HttpStatus> editCategory(@PathVariable final long categoryId, @RequestBody final EditCategoryRequest request) {
         editCategoryService.editCategory(categoryId, request);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/paged")
+    public PagedResponse<PagedCategoryResponse> getPagedCategories(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
+        return pagedCategoryService.getPagedCategories(page, size);
     }
 }
