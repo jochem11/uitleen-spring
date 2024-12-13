@@ -13,6 +13,9 @@ import uitleen.uitleensysteemback.controllers.account.get.GetAccountResponse;
 import uitleen.uitleensysteemback.controllers.account.get.GetAccountService;
 import uitleen.uitleensysteemback.controllers.account.getById.GetByIdAccountResponse;
 import uitleen.uitleensysteemback.controllers.account.getById.GetByIdAccountService;
+import uitleen.uitleensysteemback.controllers.account.paged.PagedAccountResponse;
+import uitleen.uitleensysteemback.controllers.account.paged.PagedAccountService;
+import uitleen.uitleensysteemback.models.PagedResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,14 +28,16 @@ public class AccountController {
     private final EditAccountService editAccountService;
     private final CreateAccountService createAccountService;
     private final DeleteAccountService deleteAccountService;
+    private final PagedAccountService pagedAccountService;
 
     @Autowired
-    public AccountController(GetAccountService getAccountService, GetByIdAccountService getByIdAccountService, EditAccountService editAccountService, CreateAccountService createAccountService, DeleteAccountService deleteAccountService) {
+    public AccountController(GetAccountService getAccountService, GetByIdAccountService getByIdAccountService, EditAccountService editAccountService, CreateAccountService createAccountService, DeleteAccountService deleteAccountService, PagedAccountService pagedAccountService) {
         this.getAccountService = getAccountService;
         this.getByIdAccountService = getByIdAccountService;
         this.editAccountService = editAccountService;
         this.createAccountService = createAccountService;
         this.deleteAccountService = deleteAccountService;
+        this.pagedAccountService = pagedAccountService;
     }
 
     @GetMapping
@@ -61,5 +66,14 @@ public class AccountController {
     public ResponseEntity<HttpStatus> deleteAccount(@PathVariable final long accountId) {
         deleteAccountService.deleteAccountById(accountId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/paged")
+    public PagedResponse<PagedAccountResponse> getPagedAccounts(
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "20") final int size,
+            @RequestParam(defaultValue = "id") final String sortBy,
+            @RequestParam(defaultValue = "asc") final String sortDir) {
+        return pagedAccountService.getPagedAccounts(page, size, sortBy, sortDir);
     }
 }

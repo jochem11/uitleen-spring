@@ -70,7 +70,11 @@ public class CourseController {
     }
 
     @GetMapping("/paged")
-    public PagedResponse<PagedCourseResponse> getPagedCourses(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
-        return pagedCourseService.getPagedCourses(page, size);
+    public PagedResponse<PagedCourseResponse> getPagedCourses(
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "20") final int size,
+            @RequestParam(defaultValue = "id") final String sortBy,
+            @RequestParam(defaultValue = "asc") final String sortDir) {
+        return pagedCourseService.getPagedCourses(page, size, sortBy, sortDir);
     }
 }

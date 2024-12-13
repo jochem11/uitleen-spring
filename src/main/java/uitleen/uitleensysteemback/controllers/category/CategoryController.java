@@ -74,7 +74,11 @@ public class CategoryController {
     }
 
     @GetMapping("/paged")
-    public PagedResponse<PagedCategoryResponse> getPagedCategories(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
-        return pagedCategoryService.getPagedCategories(page, size);
+    public PagedResponse<PagedCategoryResponse> getPagedCategories(
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "20") final int size,
+            @RequestParam(defaultValue = "id") final String sortBy,
+            @RequestParam(defaultValue = "asc") final String sortDir) {
+        return pagedCategoryService.getPagedCategories(page, size, sortBy, sortDir);
     }
 }

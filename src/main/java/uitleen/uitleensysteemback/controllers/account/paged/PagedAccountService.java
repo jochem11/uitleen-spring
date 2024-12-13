@@ -3,11 +3,13 @@ package uitleen.uitleensysteemback.controllers.account.paged;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import uitleen.uitleensysteemback.controllers.account.AccountRepository;
 import uitleen.uitleensysteemback.entities.Account;
 import uitleen.uitleensysteemback.entities.Role;
 import uitleen.uitleensysteemback.models.PagedResponse;
+import uitleen.uitleensysteemback.utils.SortUtils;
 
 @Service
 public class PagedAccountService {
@@ -18,8 +20,10 @@ public class PagedAccountService {
         this.accountRepository = accountRepository;
     }
 
-    public PagedResponse<PagedAccountResponse> getPagedAccounts(final int page, final int size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
+    public PagedResponse<PagedAccountResponse> getPagedAccounts(final int page, final int size, final String sortBy, final String sortDir) {
+        Sort sort = SortUtils.getPagedSort(PagedAccountResponse.class, sortBy, sortDir);
+
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
         Page<Account> accounts = accountRepository.findAll(pageRequest);
         Page<PagedAccountResponse> pagedAccountResponses = accounts.map(this::toPagedAccountResponse);
 

@@ -75,7 +75,11 @@ public class ItemStatusController {
     }
 
     @GetMapping("/paged")
-    public PagedResponse<PagedItemStatusResponse> getPagedItemStatuses(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
-        return pagedItemStatusService.getPagedItemStatuses(page, size);
+    public PagedResponse<PagedItemStatusResponse> getPagedItemStatuses(
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "20") final int size,
+            @RequestParam(defaultValue = "id") final String sortBy,
+            @RequestParam(defaultValue = "asc") final String sortDir) {
+        return pagedItemStatusService.getPagedItemStatuses(page, size, sortBy, sortDir);
     }
 }

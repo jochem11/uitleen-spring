@@ -76,7 +76,11 @@ public class ItemController {
     }
 
     @GetMapping("/paged")
-    public PagedResponse<PagedItemResponse> getPagedItems(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
-        return pagedItemService.getPagedItems(page, size);
+    public PagedResponse<PagedItemResponse> getPagedItems(
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "20") final int size,
+            @RequestParam(defaultValue = "id") final String sortBy,
+            @RequestParam(defaultValue = "asc") final String sortDir) {
+        return pagedItemService.getPagedItems(page, size, sortBy, sortDir);
     }
 }

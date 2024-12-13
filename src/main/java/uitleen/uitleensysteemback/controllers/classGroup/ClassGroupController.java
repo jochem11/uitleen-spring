@@ -69,7 +69,11 @@ public class ClassGroupController {
     }
 
     @GetMapping("/paged")
-    public PagedResponse<PagedClassGroupResponse> getPagedClassGroups(@RequestParam(defaultValue = "0") final int page, @RequestParam(defaultValue = "20") final int size) {
-        return pagedClassGroupService.getPagedClassGroups(page, size);
+    public PagedResponse<PagedClassGroupResponse> getPagedClassGroups(
+            @RequestParam(defaultValue = "0") final int page,
+            @RequestParam(defaultValue = "20") final int size,
+            @RequestParam(defaultValue = "id") final String sortBy,
+            @RequestParam(defaultValue = "asc") final String sortDir) {
+        return pagedClassGroupService.getPagedClassGroups(page, size, sortBy, sortDir);
     }
 }
