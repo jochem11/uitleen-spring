@@ -17,12 +17,12 @@ public class PagedAccountResponse {
     private Long cardNumber;
     private Long groupId;
     private Long courseId;
-    private List<PagedAccountRoleResponse> roles;
+//    private List<PagedAccountRoleResponse> roles;
 }
 
-@Getter
-@Setter
-class PagedAccountRoleResponse {
-    private Long id;
-    private String name;
-}
+//@Getter
+//@Setter
+//class PagedAccountRoleResponse {
+//    private Long id;
+//    private String name;
+//}

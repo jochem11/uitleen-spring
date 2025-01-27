@@ -16,3 +16,14 @@ INSERT INTO item (name, description, category_id, item_status_id) VALUES ('Rund'
 INSERT INTO item (name, description, category_id, item_status_id) VALUES ('Zalm', 'hoi7', 4, 2);
 INSERT INTO item (name, description, category_id, item_status_id) VALUES ('Tonijn', 'hoi8', 4, 1);
 
+INSERT INTO course (name) VALUES ('klas1');
+INSERT INTO course (name) VALUES ('klas2');
+INSERT INTO course (name) VALUES ('klas3');
+INSERT INTO course (name) VALUES ('klas4');
+INSERT INTO course (name) VALUES ('klas5');
+
+INSERT INTO class_group (name) VALUES ('groep1');
+INSERT INTO class_group (name) VALUES ('groep2');
+INSERT INTO class_group (name) VALUES ('groep3');
+INSERT INTO class_group (name) VALUES ('groep4');
+

@@ -27,4 +27,3 @@ public class PagedResponse<T> {
         this.last = page.isLast();
     }
 }
-

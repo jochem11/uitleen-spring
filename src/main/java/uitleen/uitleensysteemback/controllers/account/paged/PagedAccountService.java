@@ -41,14 +41,14 @@ public class PagedAccountService {
         response.setCardNumber(account.getCardNumber());
         response.setGroupId(account.getClassGroup().getId());
         response.setCourseId(account.getCourse().getId());
-        response.setRoles(account.getRoles().stream().map(this::toRoleResponse).toList());
+//        response.setRoles(account.getRoles().stream().map(this::toRoleResponse).toList());
         return response;
     }
 
-    private PagedAccountRoleResponse toRoleResponse(Role role) {
-        PagedAccountRoleResponse response = new PagedAccountRoleResponse();
-        response.setId(role.getId());
-        response.setName(role.getName());
-        return response;
-    }
+//    private PagedAccountRoleResponse toRoleResponse(Role role) {
+//        PagedAccountRoleResponse response = new PagedAccountRoleResponse();
+//        response.setId(role.getId());
+//        response.setName(role.getName());
+//        return response;
+//    }
 }
